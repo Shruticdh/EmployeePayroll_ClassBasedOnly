@@ -1,29 +1,32 @@
 {
   "EmpList": [
     {
+      "id": "b037",
       "name": "Shruti",
-      "profileImage": "/Assets/person1.jpeg",
-      "gender": "female",
-      "departments": [
-        "sales",
-        "engineer"
-      ],
-      "salary": "₹20,000",
-      "startDate": "14-05-2024",
-      "notes": ",mn,km",
-      "id": "6d6a"
-    },
-    {
-      "id": "91d5",
-      "name": "jbggjyhv",
       "profileImage": "/Assets/person2.jpeg",
       "gender": "female",
       "departments": [
+        "sales",
+        "finance",
+        "engineer",
+        "others"
+      ],
+      "salary": "₹10,000",
+      "startDate": "16-09-2023",
+      "notes": "mnbhjbhjb"
+    },
+    {
+      "name": "knkjbjh",
+      "profileImage": "/Assets/person2.jpeg",
+      "gender": "female",
+      "departments": [
+        "sales",
         "finance"
       ],
       "salary": "₹20,000",
-      "startDate": "14-11-2021",
-      "notes": ",mnkjbj"
+      "startDate": "14-10-2025",
+      "notes": ",nnkjbjk",
+      "id": "ea81"
     }
   ]
 }

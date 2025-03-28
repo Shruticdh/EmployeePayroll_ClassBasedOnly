@@ -19,6 +19,7 @@ class Dashboard extends Component {
       loading: false,
       error: null,
       isModalOpen: false,
+      isSearchOpen: false,
       employeeIdToDelete: null
     };
   }
@@ -41,8 +42,16 @@ class Dashboard extends Component {
     }
   };
 
+  handleSearchClick = () => {
+    this.setState({ isSearchOpen: true });
+  };
+
   handleSearch = (e) => {
     this.setState({ searchTerm: e.target.value });
+  };
+
+  handleBlur = () => {
+    this.setState({ isSearchOpen: false, searchTerm: "" });
   };
 
   handleDelete = (id) => {
@@ -91,19 +100,25 @@ class Dashboard extends Component {
           <div className="flex flex-col md:flex-row justify-between items-center mb-5 space-y-4 md:space-y-0">
             <h1 className="text-2xl font-semibold text-gray-700">Employee Details</h1>
             <div className="flex flex-col md:flex-row items-center gap-4 w-full md:w-auto">
-              <div className="relative flex items-center">
-                <input
-                  type="text"
-                  id="searchInput"
-                  placeholder="Search by name..."
-                  value={searchTerm}
-                  onChange={this.handleSearch}
-                  className="p-2 border border-gray-300 rounded w-full md:w-[250px] text-sm focus:outline-none focus:border-[#82A70C] focus:ring-1 focus:ring-[#82A70C] pr-10"
-                />
-                <div className="absolute right-3">
-                  <Search className="text-gray-400 w-5 h-5" />
-                </div>
-              </div>
+               <div className="relative flex items-center">
+        {!this.state.isSearchOpen ? (
+          <div
+            className="cursor-pointer p-2 rounded-full bg-white border hover:bg-gray-200"
+          >
+            <Search  aria-label="Search" className="text-gray-500 w-6 h-6" onClick={this.handleSearchClick} />
+          </div>
+        ) : (
+          <input
+            type="text"
+            id="searchInput"
+            placeholder="Search by name..."
+            value={this.state.searchTerm}
+            onChange={this.handleSearch}
+            onBlur={this.handleBlur} 
+            className="p-2 border border-gray-300 rounded w-full md:w-[250px] text-sm focus:outline-none focus:border-[#82A70C] focus:ring-1 focus:ring-[#82A70C] pr-10"
+          />
+        )}
+      </div>
               <button
                 onClick={this.handleAddUser}
                 className="flex items-center gap-2 bg-[#82A70C] text-white border-none rounded px-5 py-2.5 text-base hover:bg-[#7CB342] transition-colors"
@@ -146,7 +161,8 @@ class Dashboard extends Component {
                     filteredEmployees.map((employee, index) => (
                       <tr
                         key={employee.id}
-                        className={index % 2 === 0 ? 'bg-gray-100' : 'bg-white'}
+                        className="bg-white"
+
                       >
                         <td className="p-3">
                             <img

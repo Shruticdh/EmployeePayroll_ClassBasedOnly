@@ -75,26 +75,30 @@ describe('Dashboard Component', () => {
       { id: 1, name: 'Shruti', gender: 'Female', departments: ['IT'], salary: 50000, startDate: '2023-01-01' },
       { id: 2, name: 'Preu', gender: 'Female', departments: ['HR'], salary: 55000, startDate: '2023-02-01' },
     ];
+  
     fetch.mockResolvedValueOnce({
       ok: true,
       json: () => Promise.resolve(mockEmployees),
     });
-
+  
     renderWithRouter(<Dashboard />);
 
     await waitFor(() => {
       expect(screen.getByText('Shruti')).toBeInTheDocument();
       expect(screen.getByText('Preu')).toBeInTheDocument();
     });
+    fireEvent.click(screen.getByLabelText(/search/i)
+  );
 
-    fireEvent.change(screen.getByPlaceholderText('Search by name...'), {
-      target: { value: 'Shruti' },
-    });
+    const searchInput = screen.getByPlaceholderText('Search by name...');
+    expect(searchInput).toBeInTheDocument();
+
+    fireEvent.change(searchInput, { target: { value: 'Shruti' } });
 
     expect(screen.getByText('Shruti')).toBeInTheDocument();
     expect(screen.queryByText('Preu')).not.toBeInTheDocument();
   });
-
+  
   test('handles add user button click', async () => {
     fetch.mockResolvedValueOnce({
       ok: true,
