@@ -27,6 +27,19 @@
       "startDate": "14-10-2025",
       "notes": ",nnkjbjk",
       "id": "ea81"
+    },
+    {
+      "id": "5378",
+      "name": "hhb",
+      "profileImage": "/Assets/person3.jpeg",
+      "gender": "female",
+      "departments": [
+        "sales",
+        "finance"
+      ],
+      "salary": "₹10,000",
+      "startDate": "15-11-2023",
+      "notes": "jhbhubuhb"
     }
   ]
 }

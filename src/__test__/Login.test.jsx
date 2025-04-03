@@ -63,4 +63,33 @@ describe('Login Component', () => {
       expect(mockNavigate).toHaveBeenCalledWith('/dashboard');
     });
   });
+  test('handles Google login failure', async () => {
+    render(
+      <MemoryRouter>
+        <Login />
+      </MemoryRouter>
+    );
+  
+    const loginButton = screen.getByTestId('google-login-button');
+    fireEvent.click(loginButton);
+  });
+  test('uses given_name when name is missing', async () => {
+    jwtDecode.mockReturnValue({
+      given_name: 'Given User',
+      email: 'test@example.com'
+    });
+  
+    render(
+      <MemoryRouter>
+        <Login />
+      </MemoryRouter>
+    );
+  
+    const loginButton = screen.getByTestId('google-login-button');
+    fireEvent.click(loginButton);
+  
+    await waitFor(() => {
+      expect(localStorage.getItem('userName')).toBe('Given User');
+    });
+  });
 });

@@ -224,4 +224,5 @@ describe('Dashboard Component', () => {
 
     expect(screen.getByTestId('mock-header')).toBeInTheDocument();
   });
+  
 });
