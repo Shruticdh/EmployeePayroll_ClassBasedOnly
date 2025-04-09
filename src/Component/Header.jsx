@@ -5,10 +5,10 @@ import { useNavigate } from 'react-router-dom';
 
 const Header = () => {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
-  const userName = localStorage.getItem('userName');
+  const userName = JSON.parse(localStorage.getItem('userName'));
   const navigate = useNavigate();
 
-
+console.log(userName)
   const toggleDropdown = () => {
     setIsDropdownOpen(!isDropdownOpen);
   };
@@ -42,19 +42,27 @@ const Header = () => {
                 alt="User Icon" 
                 className="w-8 h-8 cursor-pointer" 
               />
-              <span className="text-[#42515F] font-medium hidden md:inline">
-                {userName}
-              </span>
+              {/* <span className="text-[#42515F] font-medium hidden md:inline">
+                {userName.name}
+                {userName.email}
+              </span> */}
             </div>
 
             {isDropdownOpen && (
-              <div className="absolute right-0 mt-2 w-48 bg-white border border-gray-200 rounded-md shadow-lg z-10">
+              <div className="absolute right-0 mt-2 w-70  p-2 bg-white border border-gray-200 rounded-md shadow-lg z-10">
                 <div className="px-4 py-2 text-[#42515F] font-medium border-b border-gray-200 md:hidden">
-                  {userName}
+                  {userName.name || userName}
                 </div>
+                <span className=" text-[#42515F] font-medium hidden md:inline">
+                {userName.name}
+                </span><br></br>
+                <span className=" text-[#42515F] font-medium hidden md:inline">
+                {userName.email}
+                </span>
+                <br></br>
                 <button
                   onClick={handleLogout}
-                  className="w-full text-left px-4 py-2 text-[#42515F] hover:bg-gray-100"
+                  className="w-full text-center px-4 py-2 text-[red] items-center border border-gray-500 hover:bg-gray-100 mt-2 rounded-sm"
                 >
                   Logout
                 </button>

@@ -3,12 +3,17 @@ import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 import Login from './src/Component/Login'
 import Registration from './src/Component/Registration'
 import Dashboard from './src/Component/Dashboard'
+import GitHubCallback from './src/Component/GithubCallback'
 
 const router = createBrowserRouter([
     {
         path: "/",
         element: <Login />
     },
+    {
+      path: "/github/callback",
+      element: <GitHubCallback />
+  },
     {
         path: '/registration',
         element: <Registration />
