@@ -1,6 +1,0 @@
-projectKey=payroll
-serverUrl=http://localhost:9000
-serverVersion=25.3.0.104237
-dashboardUrl=http://localhost:9000/dashboard?id=payroll
-ceTaskId=37cfc7b0-54f6-4698-908a-e947600a1131
-ceTaskUrl=http://localhost:9000/api/ce/task?id=37cfc7b0-54f6-4698-908a-e947600a1131
